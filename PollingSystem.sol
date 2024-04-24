@@ -29,7 +29,8 @@ contract PollingSystem {
     // Create a new poll
     function createPoll(string memory title, string[] memory options, uint maxVotesPerUser) public {
         require(options.length > 1, "There must be at least two options");
-        require(maxVotesPerUser <= 1, "Max vote per user must be equal to 1, if they vote");
+        require(maxVotesPerUser > 0, "Max votes per user must be greater than zero");
+
 
         pollCount++;
         Poll storage poll = polls[pollCount];
